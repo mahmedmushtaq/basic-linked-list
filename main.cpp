@@ -3,7 +3,7 @@ using namespace std;
 
 class node{
   public:
-      int data;
+      float data;
       node *next;
     
 };
@@ -130,13 +130,60 @@ public:
 
 int main() {
     FloatList list;
-    list.insertAtHead(3);
-    list.insertAtHead(4);
-    list.insertAtHead(7);
-    
-    list.insertAtLocation(2,22);
-    list.deleteNodeByValue(7);
-    list.displayList();
+    int choice;
+	bool quit = false;
+	int temp;
+
+	while (!quit) {
+		cout << "\nCreate a Linked List" << endl;
+		cout << "1. Insert Nodes" << endl;
+    cout << "2. Insert Nodes at the Head" << endl;
+		cout << "3. Insert Nodes at any location" << endl;
+		cout << "4. Display the Linked List" << endl;
+		cout << "5. Delete any Node from the List" << endl;
+		cout << "6. Count the number of Nodes" << endl;
+	 	cout << "7. Quit" << endl;
+    cout << "Choice = "; 
+		cin >> choice;
+		if (choice == 7) break;
+		switch (choice) {
+    case 1:
+      cout << "\nEnter an Integer Value: ";
+			cin >> temp;
+			list.appendNode(temp);
+      break;
+
+		case 2:
+
+			cout << "\nEnter an Integer Value: ";
+			cin >> temp;
+			list.insertAtHead(temp);
+			break;
+		case 3:
+			int pos;
+			cout << "\nEnter the value and position: ";
+			cin >> temp;
+			cin >> pos;
+			list.insertAtLocation(pos, temp);
+			break;
+		case 4:
+			list.displayList();
+			break;
+		case 5:
+
+			cout << "\nEnter the value of the node: ";
+			cin >> temp;
+			list.deleteNodeByValue(temp);
+			cout << "\n" << temp << " was deleted from the list";
+			break;
+		case 6:
+			cout << "\nSize of linked List: " << list.countList();
+			break;
+		default:
+			cout << "\nInvalid";
+		}
+
+	}
 
     cout << "size is = "<< list.countList();
     return 0;
